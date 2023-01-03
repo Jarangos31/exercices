@@ -23,15 +23,36 @@
         <input onclick="numeroAleatorio()" type="button" value="Número aleatorio"><br><br>
         <p id="demo2"></p>
         <hr>
+
+        <input onclick="tresNumeroAleatorios()" type="button" value="Tres números aleatorios"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+        <input onclick="probabilidad()" type="button" value="Probabilidad"><br><br>
+        <p id="demo4"></p>
+        <hr>
+
+        <input onclick="textoEnMayusculas()" type="button" value="Texto en Mayúsculas"><br><br>
+        <p id="demo5"></p>
+        <hr>
+
+        <input onclick="cadenadeTexto()" type="button" value="Texto en guiones"><br><br>
+        <p id="demo6"></p>
+        <hr>
+
+        <input onclick="vocalesEnTexto()" type="button" value="Vocales en texto"><br><br>
+        <p id="demo7"></p>
+        <hr>
+
     </article>
     <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
     <script>
-        function nombreDelMayor(){
-            let age =[2], name=[2], mayor=0, nombre="";
+        function nombreDelMayor() {
+            let age = [2], name = [2], mayor = 0, nombre = "";
 
-            for ( i = 0; i < 3; i++) {
+            for (i = 0; i < 3; i++) {
                 age[i] = Number(prompt("Ingrese la edad:"));
-                name[i] = prompt("Ingrese el nombre:");     
+                name[i] = prompt("Ingrese el nombre:");
             }
             for (let i = 0; i < 3; i++) {
                 if (age[i] > mayor) {
@@ -41,10 +62,116 @@
             }
             document.getElementById("demo").innerHTML = `La edad del mayor es: ${mayor} y su nombre es: ${nombre}.`
         }
-        function numeroAleatorio(){
+        function numeroAleatorio() {
 
-            document.getElementById("demo2").innerHTML = Math.floor(((Math.random()*99)+1));
+            document.getElementById("demo2").innerHTML = Math.floor(((Math.random() * 99) + 1));
         }
+        function tresNumeroAleatorios() {
+            let i = 0;
+            let uno = 0;
+            let dos = 0;
+            let tres = 0;
+
+            do {
+                let num = Math.floor((Math.random() * 99) + 1);
+                if (num != uno && num != dos && num != tres) {
+                    document.getElementById("demo3").innerHTML = uno + '<br>' + dos + '<br>' + tres + '<br>';
+                    i++;
+                    if (i == 1) {
+                        uno = num;
+                    }
+                    if (i == 2) {
+                        dos = num;
+                    }
+                    if (i == 3) {
+                        tres = num;
+                    }
+                }
+
+            } while (i <= 3);
+        }
+        function probabilidad() {
+            let result = "";
+            for (let i = 1; i <= 14; i++) {
+
+                num = Math.floor((Math.random() * 100) + 1);
+
+                if (num <= 60) {
+                    result += `Resultado en la posición de ${i}= 1 <br>`;
+
+                } else if (num <= 90) {
+                    result += `Resultado en la posición de ${i}= X <br>`;
+
+                } else {
+                    result += `Resultado en la posición de ${i}= 2 <br>`;
+                }
+            }
+            document.getElementById("demo4").innerHTML = result;
+        }
+        function textoEnMayusculas() {
+            let text = prompt("Ingrese una frase:");
+            document.getElementById("demo5").innerHTML = 'Texto en Mayúsculas: ' + text.toUpperCase() + '.';
+        }
+        function cadenadeTexto() {
+            let long = 0;
+            let text = prompt("Ingrese una frase:");
+            let character = "";
+
+            long = text.length;
+            for (let i = 0; i < long; i++) {
+                if (i == long - 1) {
+                    character += text.charAt(i);
+                } else {
+
+                    character += text.charAt(i);
+                    character += "-";
+
+                }
+            }
+            document.getElementById("demo5").innerHTML = character + '.';
+        }
+
+        function vocalesEnTexto() {
+            let cantidad = 0;
+            let text = prompt("Ingrese una frase:");
+            
+            let vocales = 0;
+            let character = "";
+
+            cantidad = text.length;
+
+            for (let i = 0; i < cantidad; i++) {
+                character = text[i].toLocaleUpperCase();
+
+                switch (character) {
+                    case "A":
+                        vocales++;
+                        break;
+
+                    case "E":
+                        vocales++;
+                        break;
+
+                    case "I":
+                        vocales++;
+                        break;
+
+                    case "O":
+                        vocales++;
+                        break;
+
+                    case "U":
+                        vocales++;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            document.getElementById("demo7").innerHTML = 'Cantidad de vocales: ' + vocales + '.';
+        }
+
+
     </script>
 </body>
 
