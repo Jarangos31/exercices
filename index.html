@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+        <form action="#" id="myForm">
+            <label for="document">Documento:</label>
+            <input type="text" id="document"><br>
+
+            <label for="name">Nombres completos:</label>
+            <input type="text" id="name"><br>
+
+            <label for="age">Edad:</label>
+            <input type="text" id="age"><br>
+            
+            <label for="color">Color de ojos:</label>
+            <select name="color" id="color">
+                <option value="none"></option>
+                <option value="black">Negros</option>
+                <option value="brown">Cafés</option>
+                <option value="blue">Azules</option>
+                <option value="green">Verdes</option>
+            </select><br>
+            <label for="carreer">Carrera:</label>
+            <input type="text" id="carreer"><br>
+            <label for="job">Trabajo:</label>
+            <input type="text" id="job"><br>
+            <label for="status">Estado civil:</label>
+            <input type="radio" id="alone">Soltero
+            <input type="radio" id="married">Casado
+            <input type="radio" id="unmarried">Divorciado<br>
+            <button onclick="crearPersona()">Enviar datos</button>
+        </form>
+        <p id="demo"></p>
+
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function operarArray() {
+            let x = Number(document.getElementById("btn").value);
+            let y = 0;
+            let numbers = [];
+            for (i = 0; i < x; i++) {
+                numbers[i] = parseInt(prompt("Número:"));
+                // y+=parseInt(prompt("Número:"));
+            }
+            alert(numbers.reduce(function (total, x) { return total + x }))
+        }
+        const car = {
+            type: "fiat",
+            model: 2001,
+            color: "red",
+            datos: function () {
+                return `Type: ${this.type} \nModel:${this.model} \nColor:${this.color}`
+
+            }
+        }
+        car.type = "Volvo";
+        car.model = 2020;
+        console.log(car.datos());
+
+        function operarString() {
+            let x;
+            let long;
+            x = document.getElementById("valor").value;
+            long = x.length;
+            document.getElementById("demo").innerHTML="Caracteres: "+long; 
+        }
+
+        function crearPersona(){
+            const persona={
+                documento:document.getElementById("document").value,
+                nombre:document.getElementById("name").value,
+                edad:document.getElementById("age").value,
+                color:document.getElementById("color").value,
+                carrera:document.getElementById("carreer").value,
+                trabajo:document.getElementById("job").value,
+                status:document.getElementById("status").value
+            }
+                document.getElementById("demo").innerHTML = persona.documento;
+            
+        }
+    </script>
+</body>
+
+</html>

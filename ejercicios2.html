@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="nombreDelMayor()" type="button" value="Nombre del Mayor"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+        <input onclick="numeroAleatorio()" type="button" value="Número aleatorio"><br><br>
+        <p id="demo2"></p>
+        <hr>
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function nombreDelMayor(){
+            let age =[2], name=[2], mayor=0, nombre="";
+
+            for ( i = 0; i < 3; i++) {
+                age[i] = Number(prompt("Ingrese la edad:"));
+                name[i] = prompt("Ingrese el nombre:");     
+            }
+            for (let i = 0; i < 3; i++) {
+                if (age[i] > mayor) {
+                    mayor = age[i];
+                    nombre = name[i];
+                }
+            }
+            document.getElementById("demo").innerHTML = `La edad del mayor es: ${mayor} y su nombre es: ${nombre}.`
+        }
+        function numeroAleatorio(){
+
+            document.getElementById("demo2").innerHTML = Math.floor(((Math.random()*99)+1));
+        }
+    </script>
+</body>
+
+</html>

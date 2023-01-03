@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+        <label for="">Indique su edad:</label>
+        <input type="text" id="age">
+        <input onclick="edadConducir()" type="button" value="Enviar"><br><br>
+        <hr>
+
+        <label for="">Indique una nota:</label>
+        <input type="text" id="nota">
+        <input onclick="calcularNota()" type="button" value="Enviar"><br><br>
+        <hr>
+
+        <input onclick="ingresarTexto()" type="button" value="Ingresar texto"><br><br>
+        <hr>
+
+        <input onclick="ingresarNumeros()" type="button" value="Ingresar números"><br><br>
+        <hr>
+
+        <input onclick="calcularDni()" type="button" value="Calcular DNI"><br><br>
+        <hr>
+
+        <input onclick="mostrarPiramide()" type="button" value="Mostrar pirámide"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+        <input onclick="mostrarPiramideInversa()" type="button" value="Mostrar pirámide inversa"><br><br>
+        <p id="demo2"></p>
+        <hr>
+
+        <input onclick="mostrarPiramideUsuario()" type="button" value="Mostrar pirámide Usuario"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+        <input onclick="numeros()" type="button" value="Mostrar números"><br><br>
+        <p id="demo4"></p>
+        <hr>
+
+        <input onclick="tablaDescendente()" type="button" value="Mostrar tabla"><br><br>
+        <div id="demo5"></div>
+        <hr>
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function edadConducir() {
+            let edad = document.getElementById("age").value;
+            if (edad < 18) {
+                alert("Aún no puedes conducir.")
+            } else {
+                alert("Ya puedes conducir.")
+            }
+        }
+
+        function calcularNota() {
+            let nota = parseInt(document.getElementById("nota").value);
+            if (Number(nota) == nota && (nota >= 0 && nota <= 10)) {
+                if (nota >= 0 && nota <= 3) {
+                    alert("Muy deficiente")
+                } else if (nota > 3 && nota <= 5) {
+                    alert("Insuficiente")
+                } else if (nota > 5 && nota <= 6) {
+                    alert("Suficiente")
+                }
+                else if (nota > 6 && nota <= 7) {
+                    alert("Bien")
+                }
+                else if (nota > 7 && nota <= 9) {
+                    alert("Notable")
+                } else {
+                    alert("Sobresaliente")
+                }
+            } else {
+                alert("No has ingresado una nota entre 0 y 10.")
+            }
+        }
+        function ingresarTexto() {
+            let resultado = "";
+            let cadena;
+            do {
+                cadena = prompt("Ingrese una cadena de texto");
+                if (cadena == undefined) {
+                    resultado = resultado + cadena;
+                } else {
+                    resultado = resultado + "_" + cadena;
+                }
+            } while (confirm("Desea continuar"));
+            alert(resultado);
+        }
+        function ingresarNumeros() {
+            let numbers = 0;
+            let digit = 0;
+
+            do {
+                digit = parseInt(prompt("Ingrese un numero:"));
+                if (Number(digit) != digit) {
+                    alert("No es un número.");
+                } else {
+                    numbers = numbers + digit;
+                }
+            } while (confirm("¿Desea continuar?"));
+            alert(`La suma de los números ingresados es: ${numbers}`);
+        }
+        function calcularDni() {
+            let dni = 0;
+            let digit = 0;
+            let letra = "";
+            do {
+                dni = Number(prompt("Ingrese un número de DNI entre 0 y 99.999.999:"))
+                if (Number(dni) == dni && (dni >= 0 && dni <= 99999999)) {
+                    digit = dni % 23;
+
+                    switch (digit) {
+                        case 0:
+                            letra = "A";
+                            break;
+                        case 1:
+                            letra = "B";
+                            break;
+                        case 2:
+                            letra = "C";
+                            break;
+                        case 3:
+                            letra = "D";
+                            break;
+                        case 4:
+                            letra = "E";
+                            break;
+                        case 5:
+                            letra = "F";
+                            break;
+                        case 6:
+                            letra = "G";
+                            break;
+                        case 7:
+                            letra = "H";
+                            break;
+                        case 8:
+                            letra = "I";
+                            break;
+                        case 9:
+                            letra = "J";
+                            break;
+                        case 10:
+                            letra = "K";
+                            break;
+                        case 11:
+                            letra = "L";
+                            break;
+                        case 12:
+                            letra = "M";
+                            break;
+                        case 13:
+                            letra = "N";
+                            break;
+                        case 14:
+                            letra = "O";
+                            break;
+                        case 15:
+                            letra = "P";
+                            break;
+                        case 16:
+                            letra = "Q";
+                            break;
+                        case 17:
+                            letra = "R";
+                            break;
+                        case 18:
+                            letra = "S";
+                            break;
+                        case 19:
+                            letra = "T";
+                            break;
+                        case 20:
+                            letra = "U";
+                            break;
+                        case 21:
+                            letra = "V";
+                        case 22:
+                            letra = "X";
+                        default:
+                            letra = "";
+
+                    }
+                    alert(`DNI: ${dni} Letra: ${letra}`);
+                } else {
+                    alert("No es un número.");
+                }
+            } while (confirm("¿Desea continuar?"));
+        }
+        function mostrarPiramide() {
+            let i, rep, piramide = "";
+
+            for (i = 1; i <= 30; i++) {
+                for (rep = 0; rep < i; rep++) {
+                    piramide += i;
+                }
+                piramide += "<br>";
+            }
+            document.getElementById("demo").innerHTML = piramide;
+        }
+        function mostrarPiramideInversa() {
+            let i, rep, piramide = "", number;
+            number = Number(prompt("Ingrese un numero."))
+            for (i = number; i >= 1; i--) {
+                for (rep = i; rep >= 1; rep--) {
+                    piramide += i;
+                }
+                piramide += "<br>";
+            }
+            document.getElementById("demo2").innerHTML = piramide;
+        }
+        function mostrarPiramideUsuario() {
+            let i, rep, piramide = "", number;
+            number = Number(prompt("Ingrese un numero entre 1 y 50."));
+            if (Number(number) == number && number != undefined && (number >= 1 && number <= 50)) {
+                for (i = 1; i <= number; i++) {
+                    for (rep = 1; rep <= i; rep++) {
+                        piramide += rep;
+                    }
+                    piramide += "<br>";
+                }
+                document.getElementById("demo3").innerHTML = piramide;
+            } else {
+                alert("Debes ingresar un dato válido.");
+            }
+        }
+
+        function numeros() {
+            let result = "<br>";
+            for (let i = 1; i < 501; i++) {
+                result += i;
+                if (i % 4 == 0) {
+                    result += "(Es multiplo de 4)";
+                }
+                if (i % 9 == 0) {
+                    result += "(Es multiplo de 9)";
+                }
+                if (i % 5 == 0) { }
+                result += "<hr>";
+            }
+            document.getElementById("demo4").innerHTML = result;
+        }
+        function tablaDescendente() {
+            let filas, columnas, res, tabla="<table>";;
+
+            filas = Number(prompt("Ingrese el número de filas para la tabla."));
+            columnas = Number(prompt("Ingrese el número de columnas para la tabla."));
+            res = filas * columnas;
+            for (let i = filas; i >= 1; i--) {
+                tabla +="<tr>";
+                for (let j = 0; j < columnas; j++) {
+                    tabla += "<td>";
+                    tabla += res;
+                    res--;
+                    tabla += "</td>";
+                }
+                tabla += "</tr>";
+            }
+            tabla+="</table>"
+            document.getElementById("demo5").innerHTML = tabla;
+
+        }
+    </script>
+</body>
+
+</html>
