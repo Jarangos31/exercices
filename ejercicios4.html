@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="primeraVocal()" type="button" value="Posición primera vocal"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+        <input onclick="sucesionFibonacci()" type="button" value="sucesion de Fibonacci"><br><br>
+        <p id="demo2"></p>
+        <hr>
+
+        <input onclick="juegoPiedraPapelOTijera()" type="button" value="Priedra, Papel o Tijera"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function primeraVocal() {
+            let text = prompt("Ingrese una frase:");
+            text = text.toLocaleUpperCase();
+            let character = "";
+            let position = "";
+            let bandera = true;
+
+
+            for (let i = 0; i < text.length; i++) {
+                character = text.charAt(i);
+
+                if (character == "A" || character == "E" || character == "I" || character == "O" || character == "U") {
+                    position = i;
+                    bandera = false;
+                }
+
+                if (bandera == false) {
+                    break;
+                }
+            }
+            document.getElementById("demo").innerHTML = 'La posición de la primera vocal es: ' + (position + 1);
+        }
+        function sucesionFibonacci() {
+            let number = Number(prompt("Ingrese un número entre 1 y 100"));
+            let x = 0, y = 1;
+            let suma = 0;
+            let sucesion = 0;
+            if (Number(number) == number && (number >= 1 && number <= 100)) {
+
+                for (let i = 1; i < number - 1; i++) {
+                    suma = x + y;
+                    x = y;
+                    y = suma;
+                    sucesion += "," + suma;
+
+                }
+                document.getElementById("demo2").innerHTML = sucesion;
+            } else {
+                alert("Debe ingresar un número válido.");
+            }
+
+        }
+        function juegoPiedraPapelOTijera() {
+
+            let ganadas = 0, perdidas = 0, empates = 0, total = 0;
+            let opcPC = "";
+
+            do {
+                let opcion = prompt("Escribe 'Piedra', 'Papel' o 'Tijera'.");
+                opcion = opcion.toUpperCase();
+
+                let aleatorio = Math.floor((Math.random() * 9) + 1)
+
+                if (aleatorio <= 3) {
+                    opcPC = "PIEDRA";
+                } else if (aleatorio <= 6) {
+                    opcPC = "PAPEL";
+                } else {
+                    opcPC = "TIJERA";
+                }
+
+                if (opcPC == "PIEDRA" && opcion == "PIEDRA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " = EMPATE");
+                    empates++;
+                } else if (opcPC == "PIEDRA" && opcion == "PAPEL") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANAS TÚ");
+                    ganadas++;
+                } else if (opcPC == "PIEDRA" && opcion == "TIJERA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANA PC");
+                    perdidas++;
+                }
+
+
+                if (opcPC == "PAPEL" && opcion == "PAPEL") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " = EMPATE");
+                    empates++;
+                } else if (opcPC == "PAPEL" && opcion == "PIEDRA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANA PC");
+                    perdidas++;
+                } else if (opcPC == "PAPEL" && opcion == "TIJERA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANAS TÚ");
+                    ganadas++;
+                }
+
+                if (opcPC == "TIJERA" && opcion == "TIJERA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  EMPATE");
+                    empates++;
+                } else if (opcPC == "TIJERA" && opcion == "PIEDRA") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANAS TÚ");
+                    ganadas++;
+                } else if (opcPC == "TIJERA" && opcion == "PAPEL") {
+                    alert("PC: " + opcPC + " TÚ: " + opcion + " =  GANA PC");
+                    perdidas++;
+                }
+
+                total = ganadas + perdidas + empates;
+                alert("GANADAS: " + ganadas + " \n PERDIDAS: " + perdidas + "\n EMPATES: " + empates + "\n TOTAL JUEGOS: " + total);
+            } while (confirm("¿Desea continuar?"));
+
+
+        }
+    </script>
+</body>
+
+</html>

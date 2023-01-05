@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="numeroPI()" type="button" value="Número PI"><br><br>
+        <p id="demo"></p>
+        <hr>
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function numeroPI() {
+            document.getElementById("demo").innerHTML = Math.PI.toFixed(4);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="mostrarFrase()" type="button" value="Mostrar frase (-)"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+        <input onclick="cadenaAlReves()" type="button" value="Mostrar cadena al revés"><br><br>
+        <p id="demo2"></p>
+        <hr>
+
+        <input onclick="textoPalindrono()" type="button" value="Verificar si es Palíndrono"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function mostrarFrase() {
+            let character;
+            let salida = "";
+            let existe = false;
+
+            let frase = prompt("Ingrese una frase que contenga paréntesis:")
+
+            for (let i = 0; i < frase.length; i++) {
+
+                character = frase.charAt(i);
+
+                if (character == ")") {
+                    existe = false;
+                }
+                if (existe) {
+                    salida += character;
+                }
+                if (character == "(") {
+                    existe = true;
+
+                }
+            }
+            document.getElementById("demo").innerHTML = salida;
+        }
+        function cadenaAlReves() {
+            let character = "";
+            let salida = "";
+            let cadena = prompt("Ingrese una cadena de texto:");
+
+            for (let i = cadena.length; i >= 0; i--) {
+                character = cadena.charAt(i);
+                salida += character;
+
+            }
+            document.getElementById("demo2").innerHTML = 'Cadena al revés: ' + salida + '.';
+        }
+        function textoPalindrono() {
+            let cadena = prompt("Indique una cadena de texto:");
+            cadena = cadena.toLocaleLowerCase();
+            let character = "";
+            let salida = "";
+            let texto_sin_espacios = "";
+            let cadena_reves = "";
+
+            for (let i = 0; i < cadena.length; i++) {
+
+                character = cadena.charAt(i);
+                if (character != " ") {
+                    texto_sin_espacios += character;
+                    cadena_reves = character + cadena_reves;
+                }
+
+            }
+            if (texto_sin_espacios == cadena_reves) {
+                document.getElementById("demo3").innerHTML = "Si es Palíndrono.";
+            } else {
+
+                document.getElementById("demo3").innerHTML = "No es Palíndrono.";
+            }
+        }
+    </script>
+</body>
+
+</html>
