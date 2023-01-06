@@ -19,11 +19,129 @@
         <input onclick="numeroPI()" type="button" value="Número PI"><br><br>
         <p id="demo"></p>
         <hr>
+
+        <input onclick="buscarDni()" type="button" value="Letra DNI"><br><br>
+        <p id="demo2"></p>
+        <hr>
+
+
+        <input onclick="precioIva()" type="button" value="Precio e IVA"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+        <input onclick="numAleatorio()" type="button" value="Número aleatorio"><br><br>
+        <p id="demo4"></p>
+        <hr>
+
+        <input onclick="numAleatorios()" type="button" value="Números aleatorios"><br><br>
+        <p id="demo5"></p>
+        <hr>
+
+        <input onclick="reloj()" type="button" value="Mostrar hora actual"><br><br>
+        <p id="demo6"></p>
+        <hr>
+
     </article>
     <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
     <script>
         function numeroPI() {
-            document.getElementById("demo").innerHTML = Math.PI.toFixed(4);
+            document.getElementById("demo").innerHTML = Math.PI.toFixed(2);
+        }
+
+        function letrasDni(numero) {
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            let position = numero % 23;
+            let letra = "";
+
+            letra = letras.charAt(position);
+            return letra;
+        }
+
+        function buscarDni() {
+            let dni = Number(prompt("Ingrese su DNI:"));
+            let letra = "";
+            if (Number(dni) == dni && (dni >= 9999999 && dni <= 100000000)) {
+                letra = letrasDni(dni);
+            } else {
+                alert("Ingrese un DNI válido.");
+            }
+
+            if (letra != "") {
+                document.getElementById("demo2").innerHTML = letra;
+            } else {
+                document.getElementById("demo2").innerHTML = '""';
+            }
+        }
+        function precioIva() {
+            let precio = parseFloat(prompt("Ingrese el precio del producto:"))
+            let iva = parseFloat(prompt("Ingrese el iva del producto:"))
+            let total = 0;
+            if (parseFloat(precio) == precio && precio > 0) {
+                if (parseFloat(iva) == iva && iva > 0) {
+                    total = precio * (1 + (iva / 100));
+                } else {
+                    total = precio * 1.21;
+                }
+            } else {
+                alert("Ingrese un precio válido.")
+            }
+            document.getElementById("demo3").innerHTML = `El valor del producto, con iva es: ${total}.`;
+        }
+        function numAleatorio() {
+            let min = Number(prompt("Ingrese el número mínimo."));
+            let max = Number(prompt("Ingrese el número máximo."));
+            let aleatorio = 0;
+
+            aleatorio = Math.floor(Math.random() * (max - min) + min);
+
+            document.getElementById("demo4").innerHTML = aleatorio;
+        }
+
+        function numAleatorios() {
+            let min = 1;
+            let max = 1000;
+            let aleatorio = "";
+            const numbers = [];
+            let numeros = "";
+            let bandera = true;
+            for (let i = 0; i < 100; i++) {
+
+                do {
+                    j = 0;
+                    aleatorio = Math.floor((Math.random() * (max - min)) + min);
+                    bandera = true;
+
+                    for (let j = 0; j < numbers.length; j++) {
+                        if (numbers[j] == aleatorio) {
+                            bandera = false;
+                        }
+                    }
+                } while (bandera == false);
+                numbers[i] = aleatorio;
+            }
+
+            numbers.sort(function (a, b) { return a - b });
+
+            for (let i = 0; i < numbers.length; i++) {
+                numeros += `${i + 1} — ` + numbers[i] + "<br>";
+
+            }
+            document.getElementById("demo5").innerHTML = numeros;
+            let demo5 = document.getElementById("demo5");
+            demo5.style.fontWeight = "bold";
+        }
+
+
+        
+        function reloj() {
+            const date = new Date();
+            let hora = date.getHours();
+            let minutos = date.getMinutes();
+            let segundos = date.getSeconds();
+            setInterval(reloj, 1000);
+            document.getElementById("demo6").innerHTML = date.toLocaleTimeString();
+
+
         }
     </script>
 </body>
