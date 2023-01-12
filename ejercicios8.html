@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <div id="demo">
+            <label for="documento">Ingrese su número de documeno:</label>
+            <input type="text" name="documento" id="documento"><br>
+
+            <label for="nameuser">Ingrese su nombre:</label>
+            <input type="text" name="nameuser" id="nameuser"><br>
+
+            <label for="name">Escoja el nombre del auto:</label>
+            <select name="name" id="name">
+                <option value="#"></option>
+                <option value="Volvo">Volvo</option>
+                <option value="BMW">BM2</option>
+                <option value="Mercedes">Mercedes Benz</option>
+            </select><br>
+
+            <label for="model">Escoja el modelo del auto:</label>
+            <select name="model" id="model">
+                <option value="#"></option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+            </select><br>
+
+            <label for="color">Escoja el color del auto:</label>
+            <select name="color" id="color">
+                <option value="#"></option>
+                <option value="blue">Blue</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+            </select><br>
+            <input onclick="crearObjetos()" type="button" value="Enviar">
+
+
+        </div>
+        <hr>
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function crearObjetos() {
+
+            let option;
+            const car = { document: "", user: "", name: "", model: "", color: "" }
+            car.document = document.getElementById("documento").value;
+            car.user = document.getElementById("nameuser").value;
+            car.name = document.getElementById("name").value;
+            car.model = document.getElementById("model").value;
+            car.color = document.getElementById("color").value;
+
+            do {
+                option = prompt("Ingrese la propiedad que desea mostrar del auto: documento, nameuser, name, model, color");
+
+                alert("El campo a mostrar es: " + option + "\n EL valor es: " + car['"' + option + '"']);
+
+            } while (confirm("¿Desea continuar?"));
+        }
+
+
+
+    </script>
+</body>
+
+</html>

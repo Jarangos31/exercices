@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="verificarNumeros()" type="button" value="Comparar números"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+        <input onclick="tablaDeMultiplicar()" type="button" value="Tabla de multiplicar"><br><br>
+        <table id="demo2"></table>
+        <hr>
+
+        <input onclick="operacionesNumericas()" type="button" value="Operaciones"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+        <input onclick="ingresarNumerosArray()" type="button" value="Ingresar números en array"><br><br>
+        <table id="demo4"></table>
+        <p id="demo5"></p>
+        <hr>
+
+        <form action="#">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" required="required"><br>
+
+            <label for="lastname">Apellido:</label>
+            <input type="text" name="lastname" id="lastname" required="required"><br>
+
+            <label for="age">Edad:</label>
+            <input type="text" name="age" id="age" required="required"><br>
+            <input onclick="mostrarFormulario()" type="submit" value="Enviar">
+
+
+        </form>
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function verificarNumeros() {
+            let number = Number(prompt("Ingrese un número mayor que cero:"))
+
+            if (Number(number) == number && number > 0) {
+                if (number % 2 == 0) {
+                    alert(`El número ${number} es par.`)
+
+                } else {
+                    alert(`El número ${number} es impar.`)
+                }
+
+            } else {
+                alert("Debe ingresar un número.")
+                verificarNumeros();
+            }
+        }
+        function tablaDeMultiplicar() {
+            let number = Number(prompt("Ingrese un número:"));
+            let resultados = "<tr>";
+
+            if (Number(number) == number && number > 0) {
+
+                for (let i = 1; i <= 10; i++) {
+                    resultados += "<td>" + (number + " * " + i) + "</td>";
+                    resultados += "<td>" + (number * i) + "</td>";
+                    resultados += "</tr>"
+                }
+                document.getElementById("demo2").innerHTML = resultados;
+            } else {
+                alert("Debe ingresar un número.")
+            }
+        }
+        function operacionesNumericas() {
+            let number1, number2;
+            let resultados = 0;
+
+            number1 = Number(prompt("Ingrese el primer número:"));
+
+            if (Number(number1) == number1 && number1 > 0) {
+                number2 = Number(prompt("Ingrese el segundo número:"));
+            } else {
+                alert("Debe ingresar un número.")
+                operacionesNumericas();
+            }
+            if (Number(number2) == number2 && number2 > 0) {
+                resultados = "El resultado de sumar los dos números es: " + (number1 + number2) + "<br>";
+
+                resultados += "El resultado de restar los dos números es: " + (number1 - number2) + "<br>";
+
+                resultados += "El resultado de multiplicar los dos números es: " + (number1 * number2) + "<br>";
+
+                resultados += "El resultado de dividir los dos números es: " + (number1 / number2) + "<br>";
+
+                document.getElementById("demo3").innerHTML = resultados;
+            } else {
+                alert("Debe ingresar un número.")
+                operacionesNumericas();
+            }
+
+        }
+        function ingresarNumerosArray() {
+            let numbers = [];
+            let resultados = "<tr>";
+
+            for (let i = 0; i < 6; i++) {
+                numbers.push(Number(prompt("ingrese el número " + (i + 1))));
+            }
+            //Ordenar los números del array
+            numbers.sort(function (a, b) {
+                return a - b;
+            });
+
+            for (let i = 0; i < numbers.length; i++) {
+                resultados += "<td>" + numbers[i] + "</td>";
+
+            }
+            resultados += "</tr>";
+            document.getElementById("demo4").innerHTML = resultados;
+            document.getElementById("demo5").innerHTML = "Tamaño del Array: "+numbers.length;
+
+        }
+        function mostrarFormulario() {
+            let name, lastname, age;
+            name = document.getElementById("name").value;
+            lastname = document.getElementById("lastname").value;
+            age = Number(document.getElementById("age").value);
+
+            document.write(`Datos del formulario:<br> ${name} <br> ${lastname} <br> ${age}`);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

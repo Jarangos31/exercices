@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarangos</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body class="grid-container">
+    <header class="header">Jarangos💛</header>
+    <nav class="navbar">NAVBAR</nav>
+    <aside class="sidebar">SIDEBAR</aside>
+    <article class="main">
+
+        <input onclick="comprarNumeros()" type="button" value="Comparar números"><br><br>
+        <p id="demo"></p>
+        <hr>
+
+
+        <input onclick="bucleNumeros()" type="button" value="Bucle números"><br><br>
+        <p id="demo2"></p>
+        <hr>
+
+        <input onclick="numerosInternos()" type="button" value="Entre números"><br><br>
+        <p id="demo3"></p>
+        <hr>
+
+        <input onclick="numerosImpares()" type="button" value="Números impares"><br><br>
+        <p id="demo4"></p>
+        <hr>
+
+        <input onclick="numerosDivisores()" type="button" value="Números divisores"><br><br>
+        <p id="demo5"></p>
+        <hr>
+
+    </article>
+    <footer class="footer">Hecho con 💛. Jair Arango | Todos los derechos reservados.</footer>
+    <script>
+        function comprarNumeros() {
+            let numberOne = prompt("Ingrese el primer número.");
+            let numberTwo = prompt("Ingrese el segundo número.");
+            numberOne = Number(numberOne);
+            numberTwo = Number(numberTwo);
+
+            if (numberOne <= 0 || numberTwo <= 0) {
+                alert("Debe ingresar números.");
+                comprarNumeros();
+
+            } else {
+                if (numberOne > numberTwo) {
+                    alert(`El primer número (${numberOne}) es mayor que el segundo (${numberTwo}).`);
+                } else if (numberTwo > numberOne) {
+                    alert(`El segundo número (${numberTwo}) es mayor que el primero (${numberOne}).`);
+                } else {
+                    alert("Los números son iguales.")
+                }
+
+            }
+        }
+        function bucleNumeros() {
+            let suma = 0, media = 0;
+            let stop = false;
+            let contador = 0;
+            let number = 0;
+            do {
+                number = Number(prompt("Ingrese un número, los números negativos detienen la ejecución:"))
+                if (number < 0) {
+                    stop = true;
+                }
+                contador++;
+                suma += number;
+                media = suma / contador;
+            } while (stop == false);
+            alert("La cantidad de de los números ingresados es: " + contador + ", la suma es: " + suma + " y la media es " + media.toFixed(2));
+        }
+        function numerosInternos() {
+            let min = Number(prompt("Ingrese el número menor:"));
+            let max = Number(prompt("Ingrese el número mayor:"));
+            let numbers = "Números entre " + min + " y " + max + ".<br>";
+            if ((Number(min) == min && min >= 0) && Number(max) == max && min >= 0) {
+                for (let i = min + 1; i < max; i++) {
+                    numbers += i + "<br>";
+                }
+                document.getElementById("demo3").innerHTML = numbers;
+            } else {
+                alert("Ingrese números validos.")
+            }
+        }
+        function numerosImpares() {
+            let min = Number(prompt("Ingrese el número menor:"));
+            let max = Number(prompt("Ingrese el número mayor:"));
+            let numbers = "Números Imparres entre " + min + " y " + max + ".<br>";
+            for (let i = min + 1; i < max; i++) {
+                if (i % 2 == 1) {
+                    numbers += i + "<br>";
+                }
+            }
+
+            document.getElementById("demo4").innerHTML = numbers;
+        }
+        function numerosDivisores() {
+            let number = Number(prompt("Ingrese un número:"));
+            let divisores = "Divisores de " + number + "<br>";
+            if (Number(number) == number) {
+                for (let i = 0; i <= number; i++) {
+                    if (number % i == 0) {
+                        divisores += i + "<br>";
+                    }
+                }
+                document.getElementById("demo5").innerHTML = divisores;
+            } else {
+                alert("Ingrese un número válido.")
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
